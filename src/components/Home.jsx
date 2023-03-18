@@ -30,7 +30,7 @@ const Home = () => {
       <div className="text-2xl font-bold"></div>
       <div className=" italic">
         {loading ? "Loading quote..." : ""}
-        {data && `"${data.content}`}
+        {data && `"${data.content}"`}
         <br />
         <span className="font-bold"> {data && `-${data.author} `} </span>
       </div>
