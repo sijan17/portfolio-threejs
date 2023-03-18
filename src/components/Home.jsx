@@ -28,7 +28,7 @@ const Home = () => {
   return (
     <div className="flex flex-col text-center items-ceter w-full justify-center py-4 lg:absolute lg:w-[30%] lg:right-[5%] lg:top-[40%]">
       <div className="text-2xl font-bold"></div>
-      <div className="text-xl italic">
+      <div className=" italic">
         {loading ? "Loading quote..." : ""}
         {data && `"${data.content}`}
         <br />
