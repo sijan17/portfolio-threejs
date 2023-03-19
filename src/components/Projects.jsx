@@ -1,9 +1,17 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { ActiveContext } from "../context/ActiveContext";
 import { BsCodeSlash } from "react-icons/bs";
 import { CgWebsite } from "react-icons/cg";
+import Redirect from "./Redirect";
 
 const Projects = () => {
+  const [isRedirecting, setIsRedirecting] = useState(false);
+  const [url, setUrl] = useState("");
+  const handleRedirect = (url) => {
+    setIsRedirecting(true);
+    setUrl(url);
+    console.log(isRedirecting);
+  };
   const { setActive } = useContext(ActiveContext);
   useEffect(() => {
     setActive("projects");
@@ -18,12 +26,14 @@ const Projects = () => {
         <div className="font-bold  ">{proj.title}</div>
         <div className="desc text-sm">{proj.desc}</div>
         <div className="flex  gap-8">
-          <a href={proj.hostURL}>
-            <CgWebsite className="w-6 h-6" />
-          </a>
-          <a href={proj.gitURL}>
-            <BsCodeSlash className="w-6 h-6" />
-          </a>
+          <CgWebsite
+            onClick={() => handleRedirect(proj.hostURL)}
+            className="w-6 h-6 md:cursor-pointer hover:text-green-500 ease-in-out duration-300 "
+          />
+          <BsCodeSlash
+            onClick={() => handleRedirect(proj.gitURL)}
+            className="w-6 h-6 md:cursor-pointer hover:text-green-500 ease-in-out duration-300"
+          />
         </div>
       </div>
     );
@@ -57,7 +67,7 @@ const Projects = () => {
     {
       title: "UURL",
       desc: "URL Shortner.",
-      hostURL: "https://uurl.rf.gd",
+      hostURL: "https://test.sijan-paudel.com.np",
       gitURL: "https://github.com/sijan17/uurl.git",
     },
     {
@@ -69,62 +79,20 @@ const Projects = () => {
   ];
 
   return (
-    <div className="flex flex-col items-center b  w-screen  justify-center p-4 gap-4 lg:absolute lg:w-[30%] lg:right-[5%] lg:top-[5%] ">
+    <div className=" md:p-8 md:w-[50%] lg:w-[40%]   flex flex-col items-center b  w-full   p-4 gap-4 justify-end w-screen overflow-hidden ">
       <div className="text-2xl font-bold">Work</div>
-      <div className="h-screen  shadow-lg backdrop-blur-lg rounded-[0.4rem] lg:h-full">
-        <div className=" w-screen p-4 grid gap-4 grid-cols-2   lg:w-full">
-          {projectData.map((proj, index) => Project(proj, index))}
-
-          {/* <div className=" p-2 rounded-[1rem] flex flex-col gap-2 ">
-            <div className="font-bold   ">Social Media</div>
-            <div className="desc text-sm">MERN social media project.</div>
-            <div className="flex  gap-8">
-              <CgWebsite className="w-6 h-6" />{" "}
-              <BsCodeSlash className="w-6 h-6" />
-            </div>
+      <div className="h-screen w-screen md:w-full md:h-full backdrop-blur-lg ">
+        <div className="   rounded-[0.4rem]">
+          <div className=" p-4 grid gap-4 grid-cols-2 max-h-[70vh] scroll overflow-y-scroll">
+            {projectData.map((proj, index) => Project(proj, index))}
           </div>
-          <div className=" p-2 rounded-[1rem] flex flex-col gap-2 rounded-[1rem]">
-            <div className="font-bold  ">Chess</div>
-            <div className="desc text-sm">React.Js Chess Game.</div>
-            <div className="flex  gap-8">
-              <CgWebsite className="w-6 h-6" />{" "}
-              <BsCodeSlash className="w-6 h-6" />
-            </div>
-          </div>
-          <div className=" p-2 rounded-[1rem] flex flex-col gap-2 rounded-[1rem]">
-            <div className="font-bold  ">CMS</div>
-            <div className="desc text-sm">PHP College Management System</div>
-            <div className="flex  gap-8">
-              <CgWebsite className="w-6 h-6" />{" "}
-              <BsCodeSlash className="w-6 h-6" />
-            </div>
-          </div>
-          <div className=" p-2 rounded-[1rem] flex flex-col gap-2 rounded-[1rem]">
-            <div className="font-bold  ">Ecommerce</div>
-            <div className="desc text-sm">PHP Single Vendor Ecommerce.</div>
-            <div className="flex  gap-8">
-              <CgWebsite className="w-6 h-6" />{" "}
-              <BsCodeSlash className="w-6 h-6" />
-            </div>
-          </div>
-          <div className=" p-2 rounded-[1rem] flex flex-col gap-2 rounded-[1rem]">
-            <div className="font-bold  ">UURL</div>
-            <div className="desc text-sm">URL Shortner.</div>
-            <div className="flex  gap-8">
-              <CgWebsite className="w-6 h-6" />{" "}
-              <BsCodeSlash className="w-6 h-6" />
-            </div>
-          </div>
-          <div className=" p-2 rounded-[1rem] flex flex-col gap-2 rounded-[1rem]">
-            <div className="font-bold  ">SnakeGame</div>
-            <div className="desc text-sm">React.Js Snakegame.</div>
-            <div className="flex  gap-8">
-              <CgWebsite className="w-6 h-6" />{" "}
-              <BsCodeSlash className="w-6 h-6" />
-            </div>
-          </div> */}
         </div>
       </div>
+      {isRedirecting && url ? (
+        <Redirect to={url} setIsRedirecting={setIsRedirecting} />
+      ) : (
+        ""
+      )}
     </div>
   );
 };

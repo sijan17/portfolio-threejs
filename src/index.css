@@ -19,4 +19,29 @@ canvas {
 
 body {
   overflow: hidden;
+  max-height: 100vh;
+}
+
+.scroll::-webkit-scrollbar {
+  width: 0.1em;
+}
+
+.scroll::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.scroll::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+}
+
+.tagcloud--item:hover {
+  color: #36454f;
+}
+
+.absolute-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
