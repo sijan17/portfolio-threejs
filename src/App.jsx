@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { HashRouter, Route, Routes } from "react-router-dom";
 import Background from "./components/Background";
 import Contact from "./components/Contact";
 import Home from "./components/Home";
@@ -12,7 +12,7 @@ import { ActiveContextProvider } from "./context/ActiveContext";
 const App = () => {
   return (
     <ActiveContextProvider>
-      <BrowserRouter>
+      <HashRouter>
         <Background />
         <div className="md:flex md:w-sreen md:items-center md:justify-between text-lg ">
           <Nav />
@@ -24,7 +24,7 @@ const App = () => {
             <Route path="/last" element={<Last />} />
           </Routes>
         </div>
-      </BrowserRouter>
+      </HashRouter>
     </ActiveContextProvider>
   );
 };
