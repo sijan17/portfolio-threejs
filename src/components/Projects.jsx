@@ -60,7 +60,7 @@ const Projects = () => {
   const projectData = [
     {
       title: "Social Media",
-      desc: "MERN social media project.",
+      desc: "MERN social media app.",
       hostURL: "https://social-jifg.onrender.com/",
       gitURL: "https://github.com/sijan17/social-frontend.git",
       images : [

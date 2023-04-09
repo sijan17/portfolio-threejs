@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+
 const ImageSlider = ({ images, setIsImageVisible }) => {
     const [index, setIndex] = useState(0);
 
@@ -36,10 +37,7 @@ const ImageSlider = ({ images, setIsImageVisible }) => {
 
     return (
         <>
-        {/* {isMobile && <div className="absolute z-[1000]  text-sm text-center rounded-lg top-0 left-0 right-0 w-full h-auto bg-red-400 flex justify-center space-x-2 p-4">
-        <div className=''>Small device detected. Screenshots of large screen devices might not be displayed properly.
-        <span className='bg-white p-1 ml-4 rounded-md cursor-pointer' onClick={()=>setIsMobile(false)}>Close</span></div>
-        </div>} */}
+       
         <div className="fixed top-0 left-0 w-full h-full z-[100] flex items-center justify-center ">
             <div className="text-sm">
         <ToastContainer />
