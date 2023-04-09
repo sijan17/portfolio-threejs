@@ -14,7 +14,7 @@ const App = () => {
     <ActiveContextProvider>
       <BrowserRouter>
         <Background />
-        <div className="md:flex md:w-sreen md:items-center md:justify-between ">
+        <div className="md:flex md:w-sreen md:items-center md:justify-between text-lg ">
           <Nav />
           <Routes>
             <Route path="/" element={<Home />} />
